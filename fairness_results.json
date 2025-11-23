@@ -1,0 +1,21 @@
+{
+  "flow1": {
+    "bytes": 37888,
+    "packets": 37,
+    "time": 5.018967151641846,
+    "throughput": 7548.963532786973
+  },
+  "flow2": {
+    "bytes": 34816,
+    "packets": 34,
+    "time": 5.085246801376343,
+    "throughput": 6846.472031716712
+  },
+  "fairness_metrics": {
+    "jains_fairness_index": 0.9982178217821784,
+    "flow1_share": 0.5211267605633803,
+    "flow2_share": 0.4788732394366197,
+    "is_fair": true,
+    "test_duration": 5.0
+  }
+}
