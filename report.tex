@@ -42,8 +42,8 @@
 }
 
 \title{\textbf{Pipelined Reliable Transfer Protocol:\\Design \& Analysis Report}}
-\author{Computer Networks\\Mini-Project 2 - Custom Reliable Transport Protocol}
-\date{November 22, 2025}
+\author{Computer Networks - Custom Reliable Transport Protocol}
+\date{}
 
 \begin{document}
 
@@ -53,6 +53,8 @@
 \begin{abstract}
 This report presents the design, implementation, and analysis of a custom \textbf{Pipelined Reliable Transfer Protocol} that provides connection-oriented, reliable data transfer with flow control and congestion control mechanisms. The protocol is implemented in Python using UDP sockets as the unreliable transport layer and includes a simulation framework for testing under controlled network conditions with packet loss and bit errors. 
 
+\vspace{0.4cm}
+    
     \textbf{Key features} include TCP Reno-style congestion control, sliding window flow control, pipelined transmission, and comprehensive testing with traffic analysis. The protocol successfully passes all functional tests with 100\% data integrity (10,000/10,000 bytes delivered) despite 10\% configured packet loss using only a single retransmission in 15.30 seconds. Performance testing demonstrates 92,160 bytes of application data transferred (103,396 total bytes including 20-byte headers per packet), 8.31 KB/s throughput, and 8.91\% actual packet loss over 12.16 seconds with robust congestion control adaptation (final cwnd: 3.24 packets, ssthresh: 2.0 packets). Fairness testing demonstrates near-perfect bandwidth sharing with Jain's Fairness Index of 0.998 between two competing flows, proving TCP-friendliness.
 \end{abstract}
 
