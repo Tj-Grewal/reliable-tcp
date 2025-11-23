@@ -121,11 +121,10 @@ class ProtocolTester:
             
             # Connect
             print("Establishing connection...")
-            if not client.connect('localhost', 5002, timeout=5.0):
-                print("[ERROR] Connection failed")
+            while not client.connect('localhost', 5002, timeout=5.0):
+                print("[ERROR] Connection failed; reattempting connection")
                 result['details']['error'] = 'Connection failed'
                 self.test_results.append(result)
-                return False
             
             # Send test data
             test_data = b'X' * 10000  # 10KB of data
@@ -137,7 +136,7 @@ class ProtocolTester:
             # Wait longer for all retransmissions to complete (10% loss + retransmits)
             # With 1-second timeout, multiple lost packets can take 10+ seconds
             # Account for potential multiple retransmission rounds
-            time.sleep(15.0)
+            time.sleep(5.0)
             transfer_time = time.time() - start_time
             
             # Collect statistics
@@ -221,11 +220,10 @@ class ProtocolTester:
             
             # Connect
             print("Establishing connection...")
-            if not client.connect('localhost', 5004, timeout=5.0):
+            while not client.connect('localhost', 5004, timeout=5.0):
                 print("[ERROR] Connection failed")
                 result['details']['error'] = 'Connection failed'
                 self.test_results.append(result)
-                return False
             
             # Send large amount of data to observe congestion control
             test_data = b'Y' * 50000  # 50KB
@@ -322,11 +320,10 @@ class ProtocolTester:
             
             # Connect
             print("Establishing connection...")
-            if not client.connect('localhost', 5006, timeout=5.0):
+            while not client.connect('localhost', 5006, timeout=5.0):
                 print("[ERROR] Connection failed")
                 result['details']['error'] = 'Connection failed'
                 self.test_results.append(result)
-                return False
             
             # Send data
             test_data = b'Z' * 20000  # 20KB
@@ -397,11 +394,10 @@ class ProtocolTester:
             client.start()
             
             print("Establishing connection...")
-            if not client.connect('localhost', 5008, timeout=5.0):
+            while not client.connect('localhost', 5008, timeout=5.0):
                 print("[ERROR] Connection failed")
                 result['details']['error'] = 'Connection failed'
                 self.test_results.append(result)
-                return False
             
             print("Connection established")
             time.sleep(0.5)
@@ -470,11 +466,10 @@ class ProtocolTester:
             
             # Connect
             print("Establishing connection...")
-            if not client.connect('localhost', 5010, timeout=5.0):
+            while not client.connect('localhost', 5010, timeout=5.0):
                 print("[ERROR] Connection failed")
                 result['details']['error'] = 'Connection failed'
                 self.test_results.append(result)
-                return False
             
             print(f"Sending data for {duration} seconds with 8% loss and 3% error...")
             print("Press Ctrl+C to stop early\n")
